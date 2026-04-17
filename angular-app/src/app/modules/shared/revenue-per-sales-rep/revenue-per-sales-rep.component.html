@@ -1,0 +1,40 @@
+<div class="rounded-2xl shadow-md bg-white p-4 flex flex-col gap-3">
+  <div class="flex items-center justify-between">
+    <h3 class="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+      Revenue per Sales Rep
+      <span class="ml-1 text-xs font-normal text-gray-400">({{ dateRange }})</span>
+    </h3>
+    <div class="flex items-center gap-1">
+      <button
+        (click)="loadChart()"
+        title="Reload"
+        class="p-1.5 rounded-lg text-gray-400 hover:text-blue-500 hover:bg-blue-50 transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 4v6h-6"/><path d="M1 20v-6h6"/>
+          <path d="M3.51 9a9 9 0 0 1 14.36-3.36L23 10M1 14l5.13 4.36A9 9 0 0 0 20.49 15"/>
+        </svg>
+      </button>
+      <button
+        (click)="destroyChart()"
+        title="Destroy chart"
+        class="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 6h18"/>
+          <path d="M8 6V4h8v2"/>
+          <path d="M19 6l-1 14H6L5 6"/>
+          <path d="M10 11v6"/>
+          <path d="M14 11v6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  @if (errorMessage) {
+    <p class="text-red-500 text-xs">{{ errorMessage }}</p>
+  }
+  @if(isLoading) {
+    <p class="text-blue-500 animate-pulse">Đang tải dữ liệu...</p>
+  }
+  <canvas #chartCanvas [style.height.px]="chart ? null : 0"></canvas>
+</div>

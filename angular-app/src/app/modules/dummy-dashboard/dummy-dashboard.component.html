@@ -1,0 +1,17 @@
+<div class="flex justify-center flex-row gap-4">
+  <app-revenue-per-sales-rep [dateRange]="quarter"></app-revenue-per-sales-rep>
+@defer(on timer(500ms)) {
+    <app-revenue-per-sales-rep [dateRange]="month"></app-revenue-per-sales-rep>
+  } @placeholder {
+    <div class="text-gray-500 italic">Đang chờ cuộn xuống...</div>
+  } @loading {
+    <p class="text-blue-500 animate-pulse">Đang tải dữ liệu...</p>
+  }
+  @defer(on timer(200ms)) {
+    <app-revenue-per-sales-rep [dateRange]="year"></app-revenue-per-sales-rep>
+  } @placeholder {
+    <div class="text-gray-500 italic">Đang chờ cuộn xuống...</div>
+  } @loading {
+    <p class="text-blue-500 animate-pulse">Đang tải dữ liệu...</p>
+  }
+</div>
