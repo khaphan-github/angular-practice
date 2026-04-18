@@ -1,7 +1,8 @@
-<select class="border border-gray-300 rounded px-3 py-2"
+<label for="dateRange" class="block text-sm font-medium text-gray-700 mb-1">{{ label }}</label> 
+<select class="border border-gray-300 rounded px-3 py-2 cursor-pointer"
   [value]="selectedValue"
   (change)="optionSelected.emit($any($event.target).value)">
   @for (item of this.options; track $index) {
-    <option value="{{ item.value }}" >{{ item.label }}</option>
+    <option value="{{ item.value }}" class="cursor-pointer" >{{ item.label }}</option>
   }
 </select>

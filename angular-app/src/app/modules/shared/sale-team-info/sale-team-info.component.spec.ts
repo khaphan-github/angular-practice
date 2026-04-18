@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropdownRangeComponent } from './dropdown-range.component';
+import { SaleTeamInfoComponent } from './sale-team-info.component';
 
-describe('DropdownRangeComponent', () => {
-  let component: DropdownRangeComponent;
-  let fixture: ComponentFixture<DropdownRangeComponent>;
+describe('SaleTeamInfoComponent', () => {
+  let component: SaleTeamInfoComponent;
+  let fixture: ComponentFixture<SaleTeamInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DropdownRangeComponent]
+      imports: [SaleTeamInfoComponent]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DropdownRangeComponent);
+    fixture = TestBed.createComponent(SaleTeamInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

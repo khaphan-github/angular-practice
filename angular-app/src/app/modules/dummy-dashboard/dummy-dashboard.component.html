@@ -3,9 +3,12 @@
 </div>
 
 <div class="flex justify-center flex-row gap-4">
-  <app-revenue-per-sales-rep [dateRange]="selectedDateRange"></app-revenue-per-sales-rep>
-  <app-revenue-per-sales-rep [dateRange]="selectedDateRange"></app-revenue-per-sales-rep>
-  <app-revenue-per-sales-rep [dateRange]="selectedDateRange" ></app-revenue-per-sales-rep>
+  <div class="gap-2">
+    <app-sale-team-overview [dateRange]="selectedDateRange"></app-sale-team-overview>
+  </div>
+  <div class="gap-2">
+    <app-revenue-per-sales-rep [dateRange]="selectedDateRange"></app-revenue-per-sales-rep>
+  </div>
 <!-- @defer(on timer(500ms)) {
     <app-revenue-per-sales-rep [dateRange]="month"></app-revenue-per-sales-rep>
   } @placeholder {

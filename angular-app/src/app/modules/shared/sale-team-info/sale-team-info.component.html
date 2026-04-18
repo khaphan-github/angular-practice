@@ -1,0 +1,11 @@
+<div class="metric-card">
+  <p class="metric-label">{{ label }}</p>
+  <p class="metric-current">{{ formattedCurrent }}</p>
+  <div class="metric-footer">
+    <span class="metric-growth" [class.positive]="isPositiveGrowth" [class.negative]="!isPositiveGrowth">
+      <span class="arrow">{{ isPositiveGrowth ? '▲' : '▼' }}</span>
+      {{ formattedGrowth }}
+    </span>
+    <span class="metric-previous">{{ formattedPrevious }} Previous</span>
+  </div>
+</div>
