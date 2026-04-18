@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { IDateRange, IRevenuePerSalesRep } from './revenue-per-sales-reps.interface';
 import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
 import { CommonModule } from '@angular/common';
@@ -32,7 +32,7 @@ export interface IChartView {
   templateUrl: './revenue-per-sales-rep.component.html',
   styleUrls: ['./revenue-per-sales-rep.component.css']
 })
-export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterViewInit {
+export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterViewInit, OnChanges {
   @Input() dateRange: IDateRange | null = null;
   @Input() view: IChartView = {
     title: 'Revenue per Sales Rep',
@@ -55,6 +55,11 @@ export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterView
   }
 
   constructor() { }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['dateRange'] && !changes['dateRange'].firstChange) {
+      this.loadTrigger$.next(this.dateRange);
+    }
+  }
 
   ngOnInit() {
     this.prepareTrigger();

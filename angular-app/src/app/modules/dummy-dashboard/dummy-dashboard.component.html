@@ -1,7 +1,11 @@
+<div class="flex  flex-row gap-4">
+<app-dropdown-range [options]="options" [selectedValue]="selectedDateRange" (optionSelected)="onOptionSelected($event)"></app-dropdown-range>
+</div>
+
 <div class="flex justify-center flex-row gap-4">
-  <app-revenue-per-sales-rep [dateRange]="month"></app-revenue-per-sales-rep>
-  <app-revenue-per-sales-rep ></app-revenue-per-sales-rep>
-  <app-revenue-per-sales-rep ></app-revenue-per-sales-rep>
+  <app-revenue-per-sales-rep [dateRange]="selectedDateRange"></app-revenue-per-sales-rep>
+  <app-revenue-per-sales-rep [dateRange]="selectedDateRange"></app-revenue-per-sales-rep>
+  <app-revenue-per-sales-rep [dateRange]="selectedDateRange" ></app-revenue-per-sales-rep>
 <!-- @defer(on timer(500ms)) {
     <app-revenue-per-sales-rep [dateRange]="month"></app-revenue-per-sales-rep>
   } @placeholder {

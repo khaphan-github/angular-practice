@@ -1,0 +1,7 @@
+<select class="border border-gray-300 rounded px-3 py-2"
+  [value]="selectedValue"
+  (change)="optionSelected.emit($any($event.target).value)">
+  @for (item of this.options; track $index) {
+    <option value="{{ item.value }}" >{{ item.label }}</option>
+  }
+</select>
