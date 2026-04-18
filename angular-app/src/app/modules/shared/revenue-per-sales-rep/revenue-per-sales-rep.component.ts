@@ -4,6 +4,7 @@ import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged, finalize, map, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Chart } from 'chart.js/auto';
+import { RenderState } from '../interfaces/component-render-state.interface';
 /**
  * Main functional requirements
  * - spinner when load
@@ -12,12 +13,6 @@ import { Chart } from 'chart.js/auto';
  * - Data load again when input change
  */
 
-export enum RenderState {
-  LOADING = 'loading',
-  ERROR = 'error',
-  LOADED = 'loaded',
-  EMPTY = 'empty'
-}
 export interface IChartView {
   title: string;
   description: string;

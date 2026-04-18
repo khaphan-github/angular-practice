@@ -15,13 +15,7 @@ import { IDateRange } from '../revenue-per-sales-rep/revenue-per-sales-reps.inte
 import { IOverview } from './sale-team-overview.interface';
 import { SaleTeamOverviewService } from './sale-team-overview.service';
 import { SaleTeamInfoComponent, MetricValueType } from '../sale-team-info/sale-team-info.component';
-
-export enum RenderState {
-  LOADING = 'loading',
-  ERROR = 'error',
-  LOADED = 'loaded',
-  EMPTY = 'empty',
-}
+import { RenderState } from '../revenue-per-sales-rep/revenue-per-sales-rep.component';
 
 export interface IMetricCard {
   key: keyof IOverview;

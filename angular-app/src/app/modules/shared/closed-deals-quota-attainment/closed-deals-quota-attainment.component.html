@@ -1,0 +1,61 @@
+<div class="rounded-sm shadow-sm bg-white p-4 flex flex-col gap-3">
+  <div class="flex items-center justify-between">
+    <h3 class="text-sm font-semibold text-gray-700 tracking-wide">
+      {{ view.title }} <br />
+      <small class="text-xs font-normal text-gray-400">{{ view.description }}</small>
+      @if (dateRange) {
+        <span class="text-xs font-normal text-gray-400">({{ dateRange }})</span>
+      }
+    </h3>
+
+    <div class="flex items-center ml-4 w-8 h-8 justify-center">
+      @if (renderState == 'loaded') {
+        <button
+          (click)="onReload()"
+          title="Reload"
+          class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-blue-500 hover:bg-blue-50 transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 4v6h-6" /><path d="M1 20v-6h6" />
+            <path d="M3.51 9a9 9 0 0 1 14.36-3.36L23 10M1 14l5.13 4.36A9 9 0 0 0 20.49 15" />
+          </svg>
+        </button>
+      }
+      @if (renderState == 'loading') {
+        <span class="w-8 h-8 flex items-center justify-center text-gray-400">
+          <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+        </span>
+      }
+    </div>
+  </div>
+
+  @if (renderState == 'error') {
+    <div class="w-full min-h-64 flex flex-col items-center justify-center gap-3 text-center">
+      <p class="text-red-500 text-xs">{{ errorMessage }}</p>
+      <button
+        type="button"
+        (click)="onReload()"
+        class="px-3 py-1.5 text-xs rounded-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-300 cursor-pointer"
+      >
+        Retry
+      </button>
+    </div>
+  }
+
+  @if (renderState == 'loading') {
+    <div class="w-full h-64 bg-gray-200 rounded animate-pulse"></div>
+  }
+
+  @if (renderState == 'empty') {
+    <div class="w-full h-64 flex items-center justify-center">
+      <p class="text-gray-500 italic">No data to display.</p>
+    </div>
+  }
+
+  <div class="chart-wrap" [hidden]="renderState !== 'loaded'">
+    <canvas #chartCanvas></canvas>
+  </div>
+</div>

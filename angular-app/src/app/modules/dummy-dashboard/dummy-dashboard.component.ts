@@ -3,10 +3,16 @@ import { RevenuePerSalesRepComponent } from '../shared/revenue-per-sales-rep/rev
 import { IDateRange } from '../shared/revenue-per-sales-rep/revenue-per-sales-reps.interface';
 import { DropdownRangeComponent } from '../shared/dropdown-range/dropdown-range.component';
 import { SaleTeamOverviewComponent } from '../shared/sale-team-overview/sale-team-overview.component';
+import { ClosedDealsQuotaAttainmentComponent } from '../shared/closed-deals-quota-attainment/closed-deals-quota-attainment.component';
 
 @Component({
   standalone: true,
-  imports: [RevenuePerSalesRepComponent, DropdownRangeComponent, SaleTeamOverviewComponent],
+  imports: [
+    RevenuePerSalesRepComponent,
+    DropdownRangeComponent,
+    SaleTeamOverviewComponent,
+    ClosedDealsQuotaAttainmentComponent,
+  ],
   selector: 'app-dummy-dashboard',
   templateUrl: './dummy-dashboard.component.html',
   styleUrls: ['./dummy-dashboard.component.css']
