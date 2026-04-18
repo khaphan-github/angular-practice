@@ -14,7 +14,7 @@ export class RevenuePerSalesRepsService {
    * @param dateRange 
    * @returns 
    */
-  getSalesRepRevenue(dateRange: IDateRange): Observable<{
+  getSalesRepRevenue(dateRange: IDateRange | null): Observable<{
     date_range: string,
     sales_rep_performance: IRevenuePerSalesRep[]
   }> {
