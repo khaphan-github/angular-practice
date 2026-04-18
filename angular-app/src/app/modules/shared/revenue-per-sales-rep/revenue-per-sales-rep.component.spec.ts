@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { vi } from 'vitest';
 import { RevenuePerSalesRepComponent } from './revenue-per-sales-rep.component';
-import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
+import { RevenuePerSalesRepsService } from '../services/revenue-per-sales-reps.service';
 import { IDateRange } from './revenue-per-sales-reps.interface';
 
 describe('RevenuePerSalesRepComponent', () => {

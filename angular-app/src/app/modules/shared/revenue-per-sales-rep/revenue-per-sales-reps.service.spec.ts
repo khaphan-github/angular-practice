@@ -1,6 +1,6 @@
 import { provideHttpClient } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
-import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
+import { RevenuePerSalesRepsService } from '../services/revenue-per-sales-reps.service';
 
 describe('Service: RevenuePerSalesReps', () => {
   beforeEach(() => {

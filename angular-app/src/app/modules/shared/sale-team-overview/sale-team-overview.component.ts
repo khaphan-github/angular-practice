@@ -13,9 +13,9 @@ import { CommonModule } from '@angular/common';
 import { debounceTime, finalize, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { IDateRange } from '../revenue-per-sales-rep/revenue-per-sales-reps.interface';
 import { IOverview } from './sale-team-overview.interface';
-import { SaleTeamOverviewService } from './sale-team-overview.service';
+import { SaleTeamOverviewService } from '../services/sale-team-overview.service';
 import { SaleTeamInfoComponent, MetricValueType } from '../sale-team-info/sale-team-info.component';
-import { RenderState } from '../revenue-per-sales-rep/revenue-per-sales-rep.component';
+import { RenderState } from '../interfaces/component-render-state.interface';
 
 export interface IMetricCard {
   key: keyof IOverview;

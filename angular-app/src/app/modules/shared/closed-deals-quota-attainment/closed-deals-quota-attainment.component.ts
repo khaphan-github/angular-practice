@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 import { Chart } from 'chart.js/auto';
 import { debounceTime, finalize, map, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { IDateRange, IRevenuePerSalesRep } from '../revenue-per-sales-rep/revenue-per-sales-reps.interface';
-import { RevenuePerSalesRepsService } from '../revenue-per-sales-rep/revenue-per-sales-reps.service';
+import { RevenuePerSalesRepsService } from '../services/revenue-per-sales-reps.service';
 import { RenderState } from '../interfaces/component-render-state.interface';
 
 export interface IChartView {

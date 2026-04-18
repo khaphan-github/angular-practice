@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDateRange } from '../revenue-per-sales-rep/revenue-per-sales-reps.interface';
-import { IOverviewResponse } from './sale-team-overview.interface';
+import { IOverviewResponse } from '../sale-team-overview/sale-team-overview.interface';
 
 @Injectable()
 export class SaleTeamOverviewService {

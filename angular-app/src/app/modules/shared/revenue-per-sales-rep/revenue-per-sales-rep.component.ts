@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Inject, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { IDateRange, IRevenuePerSalesRep } from './revenue-per-sales-reps.interface';
-import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
+import { RevenuePerSalesRepsService } from '../services/revenue-per-sales-reps.service';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged, finalize, map, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Chart } from 'chart.js/auto';

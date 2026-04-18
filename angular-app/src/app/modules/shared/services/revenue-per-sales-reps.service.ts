@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IDateRange, IRevenuePerSalesRep } from './revenue-per-sales-reps.interface';
+import { IDateRange, IRevenuePerSalesRep } from '../revenue-per-sales-rep/revenue-per-sales-reps.interface';
 import { Observable } from 'rxjs';
 
 @Injectable()
