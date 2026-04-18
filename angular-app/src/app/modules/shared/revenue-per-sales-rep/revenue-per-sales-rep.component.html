@@ -30,11 +30,11 @@
       </button>
     </div>
   </div>
-  @if (errorMessage) {
+  @if (renderState == 'error') {
     <p class="text-red-500 text-xs">{{ errorMessage }}</p>
   }
-  @if(isLoading) {
+  @if(renderState == 'loading') {
     <p class="text-blue-500 animate-pulse">Đang tải dữ liệu...</p>
   }
-  <canvas #chartCanvas [style.height.px]="chart ? null : 0"></canvas>
+  <canvas #chartCanvas [style.height.px]="renderState != 'loading' ? 200 : null"></canvas>
 </div>

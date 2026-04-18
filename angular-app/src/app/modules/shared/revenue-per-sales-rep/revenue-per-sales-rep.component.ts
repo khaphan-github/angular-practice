@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, inject, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Inject, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { IDateRange, IRevenuePerSalesRep } from './revenue-per-sales-reps.interface';
 import { RevenuePerSalesRepsService } from './revenue-per-sales-reps.service';
 import { CommonModule } from '@angular/common';
-import { map, Subject, takeUntil } from 'rxjs';
+import { finalize, map, Subject, takeUntil } from 'rxjs';
 import { Chart } from 'chart.js/auto';
 /**
  * Main functional requirements
@@ -24,12 +24,13 @@ export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterView
   @Input() dateRange: IDateRange = IDateRange.THIS_YEAR;
   @ViewChild('chartCanvas') chartCanvas!: ElementRef<HTMLCanvasElement>;
 
+  cdr = inject(ChangeDetectorRef);
   revenuePerSalesRepsService = inject(RevenuePerSalesRepsService);
   destroy$$ = new Subject<void>();
   initialLoadTimeout?: ReturnType<typeof setTimeout>;
   // Behavior
   chart?: Chart;
-  isLoading: boolean = false;
+  renderState: 'loading' | 'error' | 'loaded' = 'loading';
   errorMessage = '';
 
   constructor() { }
@@ -57,17 +58,28 @@ export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterView
   }
 
   loadChart() {
+    this.errorMessage = '';
+    this.renderState = 'loading';
+    this.cdr.markForCheck();
+
     this.revenuePerSalesRepsService.getSalesRepRevenue(this.dateRange).pipe(
       map(res => res.sales_rep_performance),
       map(data => this._transformToChartData(data)),
+      finalize(() => {
+        this.cdr.markForCheck();
+      }),
       takeUntil(this.destroy$$)
     ).subscribe({
       next: (chartData) => {
         this.renderChart(chartData);
+        this.renderState = 'loaded';
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Error fetching revenue per sales rep data:', err);
         this.errorMessage = 'Failed to load data. Please try again.';
+        this.renderState = 'error';
+        this.cdr.markForCheck();
       }
     });
   }
@@ -91,7 +103,7 @@ export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterView
       },
       options: {
         responsive: true,
-      }
+      },
     });
   }
 
@@ -100,8 +112,8 @@ export class RevenuePerSalesRepComponent implements OnInit, OnDestroy, AfterView
       this.chart.destroy();
       this.chart = undefined;
     }
-    this.isLoading = false;
     this.errorMessage = '';
+    this.renderState = 'loaded';
   }
 
   ngOnDestroy(): void {
